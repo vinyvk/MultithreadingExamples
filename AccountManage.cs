@@ -14,13 +14,22 @@ namespace Thread_C_
             ToAccount=to;
             amountTransfer=amount;
         }
-        //Dead lock situation 
+        //Dead lock solution 
         public void Transfer()
         {
-            lock(FromAccount)
+            object lock1,lock2;
+            if( FromAccount.Id < ToAccount.Id )
+            {
+                lock1=FromAccount;lock2=ToAccount;
+            }
+            else
+            {
+                lock1=ToAccount;lock2=FromAccount;
+            }
+            lock(lock1)
             {
                 Thread.Sleep(1000);
-                 lock(ToAccount)
+                 lock(lock2)
                 {
                    FromAccount.withDraw(amountTransfer);
                     ToAccount.deposit(amountTransfer);
