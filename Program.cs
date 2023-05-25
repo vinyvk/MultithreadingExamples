@@ -7,8 +7,8 @@ namespace Thread_C_
     {
         static  void Main(string[] args)
         {
-            Account user1=new Account(101,2500);//amend chnge
-            Account user2=new Account(102,2400);
+            Account user1=new Account(101,25000);
+            Account user2=new Account(102,24500);
 
             Console.WriteLine("Enter amount to send:");
             double amount=Convert.ToDouble(Console.ReadLine());
